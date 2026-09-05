@@ -1,0 +1,2905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#020202">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>Baby-max — The Movie Premiere | Rahul &amp; Haritha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ /* ===== CINEMATIC GOLD PALETTE (was pink/purple V2 palette) ===== */
+ --bg:#030303;
+ --bg2:#0a0a0c;
+ --text:#f8f4ea;
+ --muted:#9a9284;
+ --pink:#d9a441;      /* primary gold (was hot pink) */
+ --pink2:#f3d78c;     /* light champagne gold (was light pink) */
+ --orange:#c9832f;    /* deep amber (was orange) */
+ --purple:#8a6a2f;    /* bronze (was purple) */
+ --blue:#e7c67a;      /* pale gold-blue substitute */
+ --green:#8fd6a3;     /* soft emerald, kept for success states */
+ --gold:#e6c26a;
+ --gold-deep:#a9791f;
+ --glass:rgba(230,194,106,.06);
+ --glass2:rgba(230,194,106,.12);
+ --border:rgba(230,194,106,.18);
+ --shadow:0 25px 80px rgba(0,0,0,.65);
+ --radius:28px;
+ --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+ background:
+ radial-gradient(circle at 10% 5%,rgba(230,194,106,.13),transparent 28%),
+ radial-gradient(circle at 90% 15%,rgba(169,139,66,.12),transparent 28%),
+ radial-gradient(circle at 50% 100%,rgba(201,131,47,.09),transparent 35%),
+ var(--bg);
+ color:var(--text);
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",
+ "Segoe UI",Roboto,Arial,sans-serif;
+ overflow-x:hidden;
+ -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,.logo,.footerlogo{
+ font-family:var(--serif);
+}
+
+button,input,textarea{font:inherit;touch-action:manipulation}
+
+button{cursor:pointer}
+
+a{text-decoration:none;color:inherit}
+
+::selection{
+ background:var(--gold);
+ color:#1a1200;
+}
+
+/* ================= CINEMATIC OVERLAYS ================= */
+
+body::before{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:9990;
+ pointer-events:none;
+ background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.55) 100%);
+}
+
+body::after{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:9991;
+ pointer-events:none;
+ opacity:.035;
+ mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@media(max-width:800px){
+ body::before,body::after{display:none}
+}
+
+/* ================= BACKGROUND ================= */
+
+#particles{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ z-index:-2;
+}
+
+.ambient{
+ position:fixed;
+ width:420px;
+ height:420px;
+ border-radius:50%;
+ filter:blur(110px);
+ pointer-events:none;
+ z-index:-3;
+ animation:float 12s ease-in-out infinite alternate;
+}
+
+.a1{
+ left:-180px;
+ top:-160px;
+ background:rgba(230,194,106,.18);
+}
+
+.a2{
+ right:-180px;
+ top:35%;
+ background:rgba(169,139,66,.15);
+ animation-delay:-4s;
+}
+
+.a3{
+ left:25%;
+ bottom:-250px;
+ background:rgba(201,131,47,.13);
+ animation-delay:-8s;
+}
+
+@media(max-width:800px){
+ .ambient{
+  width:260px;
+  height:260px;
+  filter:blur(70px);
+ }
+}
+
+@keyframes float{
+ to{transform:translate(60px,45px) scale(1.12)}
+}
+
+/* ================= NAV ================= */
+
+nav{
+ position:fixed;
+ top:14px;
+ left:50%;
+ transform:translateX(-50%);
+ width:min(1120px,calc(100% - 22px));
+ padding:9px 11px 9px 16px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ z-index:1000;
+ border:1px solid var(--border);
+ background:rgba(8,7,4,.72);
+ -webkit-backdrop-filter:blur(28px) saturate(170%);
+ backdrop-filter:blur(28px) saturate(170%);
+ border-radius:22px;
+ box-shadow:0 15px 55px rgba(0,0,0,.45),0 0 0 1px rgba(230,194,106,.06) inset;
+}
+
+.logo{
+ font-size:1.15rem;
+ font-weight:900;
+ letter-spacing:-.02em;
+}
+
+.logo span{
+ background:linear-gradient(90deg,var(--gold),var(--orange));
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.navlinks{
+ display:flex;
+ gap:4px;
+}
+
+.navlinks a{
+ color:#aaa;
+ font-size:.82rem;
+ padding:9px 11px;
+ border-radius:12px;
+ transition:.2s;
+}
+
+.navlinks a:hover{
+ background:rgba(255,255,255,.08);
+ color:white;
+}
+
+.nav-actions{
+ display:flex;
+ gap:6px;
+}
+
+.iconbtn{
+ width:39px;
+ height:39px;
+ border-radius:50%;
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.07);
+ color:white;
+ transition:.2s;
+}
+
+.iconbtn:hover{
+ transform:scale(1.08);
+ background:white;
+ color:black;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+ min-height:100vh;
+ padding:130px 20px 80px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ position:relative;
+ overflow:hidden;
+}
+
+.hero-inner{
+ max-width:1000px;
+}
+
+.pill{
+ display:inline-flex;
+ align-items:center;
+ gap:8px;
+ padding:9px 15px;
+ border:1px solid var(--border);
+ border-radius:100px;
+ background:rgba(255,255,255,.06);
+ color:#ddd;
+ font-size:.75rem;
+ font-weight:800;
+ letter-spacing:.12em;
+ margin-bottom:27px;
+}
+
+.dot{
+ width:7px;
+ height:7px;
+ border-radius:50%;
+ background:var(--green);
+ box-shadow:0 0 15px var(--green);
+ animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+ 50%{transform:scale(1.6);opacity:.5}
+}
+
+.hero h1{
+ font-size:clamp(4rem,14vw,10.5rem);
+ line-height:.86;
+ letter-spacing:-.085em;
+ font-weight:900;
+}
+
+.gradient{
+ background:linear-gradient(
+ 110deg,
+ #fff6de,
+ #e6c26a,
+ #a9791f,
+ #f3d78c,
+ #fff6de
+ );
+ background-size:300% auto;
+ -webkit-background-clip:text;
+ color:transparent;
+ animation:shine 7s linear infinite;
+ text-shadow:0 0 40px rgba(230,194,106,.25);
+}
+
+@keyframes shine{
+ to{background-position:300% center}
+}
+
+.hero p{
+ max-width:680px;
+ margin:30px auto 0;
+ color:var(--muted);
+ font-size:clamp(1rem,2.5vw,1.35rem);
+}
+
+.actions{
+ margin-top:34px;
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ flex-wrap:wrap;
+}
+
+.btn{
+ padding:14px 22px;
+ border-radius:16px;
+ border:0;
+ font-weight:800;
+ transition:.25s;
+}
+
+.primary{
+ background:linear-gradient(135deg,#f3d78c,#c9832f);
+ color:#1a1200;
+ box-shadow:0 10px 30px rgba(201,131,47,.35);
+}
+
+.secondary{
+ background:rgba(230,194,106,.07);
+ border:1px solid var(--border);
+ color:var(--text);
+}
+
+.btn:hover{
+ transform:translateY(-4px) scale(1.02);
+ box-shadow:0 14px 38px rgba(201,131,47,.45);
+}
+
+.scrollhint{
+ position:absolute;
+ bottom:25px;
+ color:#666;
+ font-size:.7rem;
+ letter-spacing:.15em;
+}
+
+/* ================= GENERAL ================= */
+
+section{
+ width:min(1150px,calc(100% - 28px));
+ margin:auto;
+ padding:90px 0;
+}
+
+.heading{
+ text-align:center;
+ margin-bottom:45px;
+}
+
+.eyebrow{
+ color:var(--pink2);
+ text-transform:uppercase;
+ letter-spacing:.17em;
+ font-weight:850;
+ font-size:.72rem;
+}
+
+.heading h2{
+ font-size:clamp(2.6rem,7vw,5rem);
+ line-height:.95;
+ letter-spacing:-.065em;
+ margin-top:10px;
+}
+
+.heading p{
+ max-width:650px;
+ margin:18px auto 0;
+ color:var(--muted);
+}
+
+.card{
+ background:linear-gradient(
+ 145deg,
+ rgba(230,194,106,.09),
+ rgba(255,255,255,.02)
+ );
+ border:1px solid var(--border);
+ border-radius:var(--radius);
+ box-shadow:var(--shadow);
+ backdrop-filter:blur(25px);
+ -webkit-backdrop-filter:blur(25px);
+ transition:box-shadow .4s ease,border-color .4s ease;
+}
+
+.card:hover{
+ border-color:rgba(230,194,106,.32);
+ box-shadow:var(--shadow),0 0 40px rgba(230,194,106,.08);
+}
+
+.reveal{
+ opacity:0;
+ transform:translateY(45px) scale(.985);
+ transition:1.1s cubic-bezier(.16,.8,.24,1);
+ will-change:opacity,transform;
+}
+
+.reveal.visible{
+ opacity:1;
+ transform:none;
+}
+
+@media(prefers-reduced-motion:reduce){
+ .reveal{transition:.3s ease}
+}
+
+/* ================= STORY ================= */
+
+.story{
+ padding:42px;
+ position:relative;
+ overflow:hidden;
+}
+
+.story h3{
+ font-size:2rem;
+ margin-bottom:14px;
+}
+
+.story p{
+ color:#9d9da7;
+ font-size:1.08rem;
+}
+
+.storybadge{
+ margin-top:25px;
+ display:inline-block;
+ padding:8px 13px;
+ border-radius:100px;
+ background:rgba(255,59,145,.1);
+ color:var(--pink2);
+ font-size:.78rem;
+}
+
+/* ================= 3D CRIB ================= */
+
+.crib-zone{
+ min-height:620px;
+ display:grid;
+ place-items:center;
+ perspective:1100px;
+ overflow:hidden;
+ position:relative;
+}
+
+.crib-title{
+ position:absolute;
+ top:30px;
+ text-align:center;
+ z-index:5;
+}
+
+.crib-title h3{
+ font-size:2rem;
+ letter-spacing:-.05em;
+}
+
+.crib-title p{
+ color:#777;
+ margin-top:5px;
+ font-size:.85rem;
+}
+
+.crib-stage{
+ width:330px;
+ height:300px;
+ position:relative;
+ transform-style:preserve-3d;
+ animation:cribRotate 9s linear infinite;
+}
+
+@keyframes cribRotate{
+ from{transform:rotateY(0deg) rotateX(4deg)}
+ to{transform:rotateY(360deg) rotateX(4deg)}
+}
+
+.crib-floor{
+ position:absolute;
+ width:280px;
+ height:100px;
+ left:25px;
+ top:180px;
+ background:linear-gradient(145deg,#d59a65,#8d5736);
+ border-radius:20px 20px 40px 40px;
+ transform:rotateX(65deg);
+ box-shadow:0 20px 35px rgba(0,0,0,.45);
+}
+
+.crib-mattress{
+ position:absolute;
+ width:235px;
+ height:80px;
+ left:48px;
+ top:140px;
+ border-radius:28px;
+ background:linear-gradient(145deg,#fff,#ffcde2);
+ transform:rotateX(65deg) translateZ(35px);
+ box-shadow:0 12px 25px rgba(0,0,0,.3);
+}
+
+.rail{
+ position:absolute;
+ width:255px;
+ height:15px;
+ left:38px;
+ background:linear-gradient(90deg,#c88451,#f1bc82,#c88451);
+ border-radius:20px;
+ box-shadow:0 8px 15px rgba(0,0,0,.25);
+}
+
+.rail.r1{top:100px}
+.rail.r2{top:120px}
+.rail.r3{top:140px}
+
+.post{
+ position:absolute;
+ width:19px;
+ height:230px;
+ top:70px;
+ background:linear-gradient(90deg,#9d6238,#f0b476,#a3653a);
+ border-radius:20px;
+}
+
+.p1{left:35px}
+.p2{right:35px}
+
+.baby{
+ position:absolute;
+ left:112px;
+ top:96px;
+ width:110px;
+ height:82px;
+ border-radius:50px 50px 40px 40px;
+ background:linear-gradient(145deg,#fff,#ffd7e6);
+ transform:translateZ(55px);
+ box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.baby:before{
+ content:"👶";
+ position:absolute;
+ font-size:48px;
+ left:29px;
+ top:-42px;
+}
+
+.pillow{
+ position:absolute;
+ left:80px;
+ top:100px;
+ width:170px;
+ height:55px;
+ border-radius:50%;
+ background:rgba(255,255,255,.85);
+ transform:translateZ(42px);
+}
+
+.crib-controls{
+ position:absolute;
+ bottom:30px;
+ display:flex;
+ gap:8px;
+}
+
+.crib-controls button{
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.07);
+ color:white;
+ padding:10px 15px;
+ border-radius:13px;
+}
+
+.crib-controls button:hover{
+ background:white;
+ color:black;
+}
+
+/* ================= BALLOONS ================= */
+
+.balloon-zone{
+ display:flex;
+ justify-content:center;
+ align-items:flex-end;
+ gap:18px;
+ min-height:280px;
+ padding:20px;
+ overflow:hidden;
+}
+
+.balloon{
+ width:70px;
+ height:88px;
+ border-radius:50% 50% 45% 45%;
+ position:relative;
+ cursor:pointer;
+ animation:sway 3s ease-in-out infinite alternate;
+ box-shadow:
+ inset -12px -10px 20px rgba(0,0,0,.18),
+ inset 12px 8px 15px rgba(255,255,255,.25),
+ 0 15px 30px rgba(0,0,0,.2);
+ transition:.3s;
+}
+
+.balloon:hover{
+ transform:scale(1.12);
+}
+
+.balloon:after{
+ content:"";
+ position:absolute;
+ width:1px;
+ height:120px;
+ background:#888;
+ top:82px;
+ left:50%;
+}
+
+.balloon:before{
+ content:"";
+ position:absolute;
+ bottom:-7px;
+ left:31px;
+ width:9px;
+ height:9px;
+ background:inherit;
+ transform:rotate(45deg);
+}
+
+@keyframes sway{
+ from{transform:translateY(4px) rotate(-4deg)}
+ to{transform:translateY(-12px) rotate(5deg)}
+}
+
+.b1{background:#ff4d9a}
+.b2{background:#a98bff;animation-delay:-.5s}
+.b3{background:#ff9f43;animation-delay:-1s}
+.b4{background:#68c9ff;animation-delay:-1.5s}
+.b5{background:#69e69a;animation-delay:-2s}
+
+/* ================= REELS ================= */
+
+.reels{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+}
+
+.reel{
+ padding:12px;
+ overflow:hidden;
+}
+
+.reelhead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:14px;
+}
+
+.reelnum{
+ color:#666;
+ font-size:.75rem;
+}
+
+.video{
+ aspect-ratio:9/16;
+ background:#000;
+ border-radius:20px;
+ overflow:hidden;
+ position:relative;
+}
+
+.video video{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ display:block;
+ background:#000;
+}
+
+.videofallback{
+ position:absolute;
+ inset:0;
+ display:none;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:8px;
+ text-align:center;
+ padding:26px;
+ background:radial-gradient(circle at 50% 30%,rgba(230,194,106,.1),transparent 60%),#050503;
+}
+
+.videofallback.show{
+ display:flex;
+}
+
+.vf-icon{font-size:2.6rem}
+
+.vf-title{
+ font-weight:800;
+ color:var(--gold);
+}
+
+.vf-text{
+ color:var(--muted);
+ font-size:.82rem;
+ max-width:280px;
+}
+
+.vf-text code{
+ color:var(--pink2);
+ font-size:.78rem;
+}
+
+.reelfoot{
+ color:#777;
+ font-size:.78rem;
+ padding:13px 14px;
+}
+
+/* ================= MUSIC ================= */
+
+.music{
+ padding:32px;
+ text-align:center;
+}
+
+.disc{
+ width:150px;
+ height:150px;
+ margin:10px auto 25px;
+ border-radius:50%;
+ display:grid;
+ place-items:center;
+ background:
+ radial-gradient(circle,#222 0 9%,transparent 10%),
+ repeating-radial-gradient(circle,#111 0 3px,#24242a 4px 7px);
+ border:8px solid #16161a;
+ box-shadow:0 20px 50px rgba(0,0,0,.45);
+ animation:spin 5s linear infinite;
+ animation-play-state:paused;
+}
+
+.disc.playing{
+ animation-play-state:running;
+}
+
+@keyframes spin{
+ to{transform:rotate(360deg)}
+}
+
+.music-title{
+ font-size:1.4rem;
+ font-weight:800;
+}
+
+.music-sub{
+ color:#777;
+ font-size:.8rem;
+ margin:5px 0 20px;
+}
+
+.music input[type=file]{
+ max-width:100%;
+ color:#aaa;
+ margin-bottom:15px;
+}
+
+.music-controls{
+ display:flex;
+ justify-content:center;
+ gap:8px;
+}
+
+.music-controls button{
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.07);
+ color:white;
+}
+
+.music-controls button.main{
+ background:white;
+ color:black;
+}
+
+.progress{
+ width:100%;
+ margin-top:20px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+
+.photo{
+ aspect-ratio:1;
+ border-radius:20px;
+ border:1px solid var(--border);
+ background:
+ linear-gradient(135deg,
+ rgba(255,59,145,.35),
+ rgba(169,139,255,.25),
+ rgba(255,159,67,.2));
+ display:grid;
+ place-items:center;
+ font-size:3rem;
+ cursor:pointer;
+ overflow:hidden;
+ transition:.3s;
+}
+
+.photo:nth-child(2){background:linear-gradient(135deg,#a98bff,#68c9ff)}
+.photo:nth-child(3){background:linear-gradient(135deg,#ff9f43,#ff3b91)}
+.photo:nth-child(4){background:linear-gradient(135deg,#69e69a,#68c9ff)}
+.photo:nth-child(5){background:linear-gradient(135deg,#ff77b7,#a98bff)}
+.photo:nth-child(6){background:linear-gradient(135deg,#68c9ff,#ff9f43)}
+
+.photo:hover{
+ transform:scale(1.025);
+}
+
+/* ================= GAMES ================= */
+
+.games{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:20px;
+}
+
+.game{
+ padding:30px;
+ min-height:400px;
+ display:flex;
+ flex-direction:column;
+}
+
+.game-icon{
+ font-size:3rem;
+}
+
+.game h3{
+ font-size:1.55rem;
+ margin:12px 0 4px;
+}
+
+.game p{
+ color:#85858e;
+}
+
+.gamearea{
+ margin-top:auto;
+ padding-top:25px;
+}
+
+.gamebtn{
+ width:100%;
+ border:0;
+ background:white;
+ color:black;
+ border-radius:16px;
+ padding:14px;
+ font-weight:850;
+}
+
+.quizprogress{
+ color:var(--gold);
+ font-size:.72rem;
+ font-weight:800;
+ letter-spacing:.1em;
+ text-transform:uppercase;
+ margin-bottom:8px;
+}
+
+.quizquestion{
+ font-size:1.02rem;
+ margin-bottom:14px;
+ min-height:44px;
+}
+
+.choices{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:7px;
+}
+
+.choices button{
+ padding:12px 4px;
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.05);
+ color:white;
+ border-radius:13px;
+}
+
+.result{
+ min-height:50px;
+ text-align:center;
+ color:var(--pink2);
+ font-weight:800;
+ padding-top:12px;
+}
+
+/* ================= LEADERBOARD ================= */
+
+.leaderboard{
+ padding:32px;
+}
+
+.playeradd{
+ display:grid;
+ grid-template-columns:1fr 150px;
+ gap:8px;
+ margin-bottom:20px;
+}
+
+.input{
+ width:100%;
+ border:1px solid var(--border);
+ background:rgba(255,255,255,.05);
+ color:white;
+ border-radius:14px;
+ padding:13px 15px;
+ outline:none;
+}
+
+.input:focus{
+ border-color:var(--pink);
+}
+
+.scorelist{
+ display:grid;
+ gap:8px;
+}
+
+.player{
+ display:grid;
+ grid-template-columns:50px 1fr auto;
+ align-items:center;
+ gap:10px;
+ padding:13px;
+ border-radius:15px;
+ background:rgba(255,255,255,.045);
+ border:1px solid rgba(255,255,255,.06);
+}
+
+.rank{
+ font-size:1.3rem;
+ font-weight:900;
+}
+
+.score{
+ color:var(--pink2);
+ font-weight:900;
+}
+
+/* ================= RSVP ================= */
+
+.rsvp{
+ padding:35px;
+}
+
+.formgrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+
+.rsvp textarea{
+ min-height:110px;
+ margin-top:10px;
+ resize:vertical;
+}
+
+.rsvp .full{
+ grid-column:1/-1;
+}
+
+/* ================= QR ================= */
+
+.qrbox{
+ padding:40px;
+ text-align:center;
+}
+
+#qr{
+ width:210px;
+ height:210px;
+ margin:25px auto;
+ padding:12px;
+ background:white;
+ border-radius:20px;
+ display:grid;
+ place-items:center;
+ color:black;
+ font-size:3rem;
+}
+
+.qrtext{
+ color:#888;
+ max-width:500px;
+ margin:auto;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:10px;
+}
+
+.time{
+ padding:25px 10px;
+ text-align:center;
+}
+
+.time b{
+ font-size:2.3rem;
+ letter-spacing:-.05em;
+}
+
+.time span{
+ display:block;
+ color:#666;
+ font-size:.7rem;
+ text-transform:uppercase;
+ letter-spacing:.1em;
+}
+
+/* ================= EASTER EGG ================= */
+
+.secret{
+ padding:35px;
+ text-align:center;
+ border-color:rgba(169,139,255,.2);
+}
+
+.secret p{
+ color:#777;
+ margin-top:7px;
+}
+
+#egg{
+ font-size:4rem;
+ margin:20px;
+ cursor:pointer;
+ display:inline-block;
+ transition:.3s;
+}
+
+#egg:hover{
+ transform:rotate(20deg) scale(1.15);
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.82);
+ -webkit-backdrop-filter:blur(20px);
+ backdrop-filter:blur(20px);
+ z-index:3000;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+
+.modal.open{
+ display:flex;
+}
+
+.modalbox{
+ width:min(520px,100%);
+ padding:35px;
+ text-align:center;
+ position:relative;
+}
+
+.close{
+ position:absolute;
+ right:15px;
+ top:15px;
+ width:35px;
+ height:35px;
+ border-radius:50%;
+ border:0;
+ background:rgba(255,255,255,.1);
+ color:white;
+}
+
+.lightimage{
+ font-size:8rem;
+ padding:50px;
+}
+
+/* ================= FIREWORKS ================= */
+
+.firework{
+ position:fixed;
+ width:6px;
+ height:6px;
+ border-radius:50%;
+ pointer-events:none;
+ z-index:5000;
+ animation:explode 1.2s forwards;
+}
+
+@keyframes explode{
+ 0%{transform:translate(0,0);opacity:1}
+ 100%{
+  transform:translate(
+   calc((var(--x) - .5) * 600px),
+   calc((var(--y) - .5) * 600px)
+  );
+  opacity:0;
+ }
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:25px;
+ transform:translate(-50%,120px);
+ background:rgba(18,16,10,.92);
+ border:1px solid var(--border);
+ padding:13px 20px;
+ border-radius:100px;
+ z-index:6000;
+ transition:.4s;
+ -webkit-backdrop-filter:blur(20px);
+ backdrop-filter:blur(20px);
+}
+
+.toast.show{
+ transform:translate(-50%,0);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+ padding:80px 20px 40px;
+ text-align:center;
+}
+
+.footerlogo{
+ font-size:2.2rem;
+ font-weight:950;
+ letter-spacing:-.07em;
+}
+
+footer p{
+ color:#666;
+ margin-top:8px;
+}
+
+/* ================= CAST & CREW CREDITS ================= */
+
+.credits-section{
+ padding-bottom:0;
+}
+
+.credits-viewport{
+ position:relative;
+ height:70vh;
+ min-height:480px;
+ max-height:720px;
+ overflow:hidden;
+ background:
+ radial-gradient(ellipse at 50% 0%,rgba(230,194,106,.06),transparent 60%),
+ #010101;
+ -webkit-mask-image:linear-gradient(to bottom,transparent,black 14%,black 86%,transparent);
+ mask-image:linear-gradient(to bottom,transparent,black 14%,black 86%,transparent);
+}
+
+.credits-particles{
+ position:absolute;
+ inset:0;
+ pointer-events:none;
+ opacity:.5;
+ background-image:
+ radial-gradient(1.5px 1.5px at 12% 18%,rgba(230,194,106,.9),transparent),
+ radial-gradient(1px 1px at 28% 62%,rgba(243,215,140,.8),transparent),
+ radial-gradient(1.5px 1.5px at 46% 30%,rgba(230,194,106,.7),transparent),
+ radial-gradient(1px 1px at 63% 75%,rgba(243,215,140,.7),transparent),
+ radial-gradient(1.5px 1.5px at 79% 22%,rgba(230,194,106,.85),transparent),
+ radial-gradient(1px 1px at 88% 60%,rgba(243,215,140,.6),transparent),
+ radial-gradient(1.5px 1.5px at 35% 88%,rgba(230,194,106,.6),transparent),
+ radial-gradient(1px 1px at 55% 10%,rgba(243,215,140,.7),transparent);
+ animation:sparkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle{
+ from{opacity:.25}
+ to{opacity:.6}
+}
+
+.credits-roll{
+ position:absolute;
+ left:0;
+ right:0;
+ top:0;
+ text-align:center;
+ padding:0 24px;
+ animation:creditsScroll 42s linear infinite;
+}
+
+@keyframes creditsScroll{
+ 0%{transform:translateY(100%)}
+ 100%{transform:translateY(-115%)}
+}
+
+@media(prefers-reduced-motion:reduce){
+ .credits-roll{animation-duration:90s}
+}
+
+.credits-block{
+ margin-bottom:70px;
+}
+
+.credits-role{
+ color:var(--gold);
+ text-transform:uppercase;
+ letter-spacing:.28em;
+ font-size:.78rem;
+ font-weight:800;
+ margin-bottom:22px;
+}
+
+.credits-name{
+ font-family:var(--serif);
+ font-size:1.15rem;
+ color:var(--text);
+ letter-spacing:.03em;
+ line-height:2;
+}
+
+.credits-name.lead{
+ font-size:1.6rem;
+ font-weight:800;
+ color:var(--pink2);
+ line-height:1.7;
+}
+
+.credits-final{
+ margin-top:40px;
+ margin-bottom:120px;
+}
+
+.credits-babymax{
+ font-family:var(--serif);
+ font-size:clamp(2.6rem,9vw,5.5rem);
+ font-weight:900;
+ letter-spacing:-.03em;
+}
+
+.blackout{
+ height:120px;
+ background:linear-gradient(to bottom,transparent,#000 70%);
+ display:flex;
+ align-items:flex-end;
+ justify-content:center;
+ padding-bottom:22px;
+}
+
+.blackout::after{
+ content:"❦ Fin ❦";
+ color:var(--gold-deep);
+ letter-spacing:.35em;
+ font-size:.7rem;
+ text-transform:uppercase;
+}
+
+@media(max-width:800px){
+ .credits-viewport{height:60vh;min-height:420px}
+ .credits-name{font-size:1rem}
+ .credits-name.lead{font-size:1.35rem}
+ .credits-particles{display:none}
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:800px){
+
+ .navlinks{display:none}
+
+ .reels,
+ .games{
+  grid-template-columns:1fr;
+ }
+
+ .gallery{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .stats{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .formgrid{
+  grid-template-columns:1fr;
+ }
+
+ .rsvp .full{
+  grid-column:auto;
+ }
+
+}
+
+@media(max-width:500px){
+
+ .hero h1{
+  font-size:4.2rem;
+ }
+
+ .countdown{
+  grid-template-columns:1fr 1fr;
+ }
+
+ .balloon-zone{
+  gap:8px;
+ }
+
+ .balloon{
+  width:55px;
+  height:72px;
+ }
+
+ .crib-stage{
+  transform:scale(.8);
+ }
+
+ .playeradd{
+  grid-template-columns:1fr;
+ }
+
+ .actions{
+  flex-direction:column;
+ }
+
+ .actions .btn{
+  width:100%;
+ }
+
+ .iconbtn{
+  width:44px;
+  height:44px;
+ }
+
+ .btn,
+ .choices button,
+ .music-controls button,
+ .crib-controls button{
+  min-height:44px;
+ }
+
+ .credits-block{
+  margin-bottom:50px;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient a1"></div>
+<div class="ambient a2"></div>
+<div class="ambient a3"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav>
+ <div class="logo">Baby<span>-max</span></div>
+
+ <div class="navlinks">
+  <a href="#reels">Reels</a>
+  <a href="#crib">Crib</a>
+  <a href="#games">Games</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#rsvp">RSVP</a>
+ </div>
+
+ <div class="nav-actions">
+  <button class="iconbtn" onclick="toggleTheme()">☼</button>
+  <button class="iconbtn" onclick="fireworks()">✦</button>
+ </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+ <div class="hero-inner reveal">
+
+  <div class="pill">
+   <span class="dot"></span>
+   🎬 A BABY-MAX PREMIERE • GODH BHARAI
+  </div>
+
+  <h1>
+   Rahul
+   <br>
+   <span class="gradient">&amp; Haritha</span>
+  </h1>
+
+  <p>
+   A new little chapter is loading.
+   Step into the premiere of an interactive Godh Bharai
+   experience — built for memories, family and maximum baby energy.
+  </p>
+
+  <div class="actions">
+   <a class="btn primary" href="#reels">▶ Enter the Premiere</a>
+   <button class="btn secondary" onclick="fireworks()">🎆 Celebrate</button>
+  </div>
+
+ </div>
+
+ <div class="scrollhint">SCROLL • EXPLORE • CELEBRATE</div>
+</header>
+
+<!-- STORY -->
+<section>
+ <div class="heading reveal">
+  <div class="eyebrow">Chapter 01</div>
+  <h2>The beginning of<br><span class="gradient">something beautiful.</span></h2>
+ </div>
+
+ <div class="card story reveal">
+  <h3>I. The Blessing</h3>
+
+  <p>
+   The opening scene needed no rehearsal — just a room full of
+   people who love Haritha showing up with smiles, blessings and
+   excitement. Elders took their seats first, the bangles came out,
+   the turmeric appeared, and the celebration began.
+  </p>
+
+  <div class="storybadge">
+   ✨ Baby-max • A memory worth keeping
+  </div>
+ </div>
+</section>
+
+<!-- 3D CRIB -->
+<section id="crib">
+
+ <div class="heading reveal">
+  <div class="eyebrow">Baby-max 3D Lab</div>
+  <h2>The <span class="gradient">Magic Crib.</span></h2>
+  <p>
+   A tiny virtual crib for the tiniest VIP.
+   Tap the controls to change its movement.
+  </p>
+ </div>
+
+ <div class="card crib-zone reveal">
+
+  <div class="crib-title">
+   <h3>🍼 Baby-max Crib</h3>
+   <p>Interactive 3D keepsake</p>
+  </div>
+
+  <div class="crib-stage" id="cribStage">
+
+   <div class="crib-floor"></div>
+   <div class="crib-mattress"></div>
+   <div class="pillow"></div>
+
+   <div class="rail r1"></div>
+   <div class="rail r2"></div>
+   <div class="rail r3"></div>
+
+   <div class="post p1"></div>
+   <div class="post p2"></div>
+
+   <div class="baby"></div>
+
+  </div>
+
+  <div class="crib-controls">
+   <button onclick="cribMode('slow')">🐢 Slow</button>
+   <button onclick="cribMode('normal')">✨ Normal</button>
+   <button onclick="cribMode('turbo')">🚀 Turbo</button>
+   <button onclick="cribMode('stop')">⏸ Stop</button>
+  </div>
+
+ </div>
+</section>
+
+<!-- BALLOONS -->
+<section>
+
+ <div class="heading reveal">
+  <div class="eyebrow">Interactive Celebration</div>
+  <h2>Pop the <span class="gradient">Balloons.</span></h2>
+  <p>Tap them. Seriously. They're waiting.</p>
+ </div>
+
+ <div class="card balloon-zone reveal">
+
+  <div class="balloon b1" onclick="popBalloon(this)"></div>
+  <div class="balloon b2" onclick="popBalloon(this)"></div>
+  <div class="balloon b3" onclick="popBalloon(this)"></div>
+  <div class="balloon b4" onclick="popBalloon(this)"></div>
+  <div class="balloon b5" onclick="popBalloon(this)"></div>
+
+ </div>
+</section>
+
+<!-- REELS -->
+<section id="reels">
+
+ <div class="heading reveal">
+  <div class="eyebrow">Feature Presentation</div>
+  <h2>Two reels.<br><span class="gradient">One memory.</span></h2>
+ </div>
+
+ <div class="reels">
+
+  <article class="card reel reveal">
+
+   <div class="reelhead">
+    <strong>Baby-max Reel 01</strong>
+    <span class="reelnum">01 / 02</span>
+   </div>
+
+   <div class="video" id="videoBox1">
+    <video
+     id="reelVideo1"
+     controls
+     playsinline
+     webkit-playsinline="true"
+     preload="metadata"
+     disablepictureinpicture
+     data-reel="1"
+    >
+     <source src="Baby-max Reel 01.mp4" type="video/mp4">
+     Your browser can't play this video inline.
+    </video>
+    <div class="videofallback" id="videoFallback1">
+     <div class="vf-icon">🎬</div>
+     <div class="vf-title">Reel 01 not found</div>
+     <div class="vf-text">
+      Place <code>Baby-max Reel 01.mp4</code> in the same
+      folder as this page, then tap retry.
+     </div>
+     <button class="btn secondary" onclick="retryReel(1)">↻ Retry</button>
+    </div>
+   </div>
+
+   <div class="reelfoot">
+    The Ceremony • Baby-max
+   </div>
+
+  </article>
+
+  <article class="card reel reveal">
+
+   <div class="reelhead">
+    <strong>Baby-max Reel 02</strong>
+    <span class="reelnum">02 / 02</span>
+   </div>
+
+   <div class="video" id="videoBox2">
+    <video
+     id="reelVideo2"
+     controls
+     playsinline
+     webkit-playsinline="true"
+     preload="metadata"
+     disablepictureinpicture
+     data-reel="2"
+    >
+     <source src="Baby-max Reel 02.mp4" type="video/mp4">
+     Your browser can't play this video inline.
+    </video>
+    <div class="videofallback" id="videoFallback2">
+     <div class="vf-icon">🎬</div>
+     <div class="vf-title">Reel 02 not found</div>
+     <div class="vf-text">
+      Place <code>Baby-max Reel 02.mp4</code> in the same
+      folder as this page, then tap retry.
+     </div>
+     <button class="btn secondary" onclick="retryReel(2)">↻ Retry</button>
+    </div>
+   </div>
+
+   <div class="reelfoot">
+    The Celebration • Baby-max
+   </div>
+
+  </article>
+
+ </div>
+</section>
+
+<!-- MUSIC -->
+<section>
+
+ <div class="heading reveal">
+  <div class="eyebrow">Baby-max Soundtrack</div>
+  <h2>Press <span class="gradient">play.</span></h2>
+ </div>
+
+ <div class="card music reveal">
+
+  <div class="disc" id="disc">🍼</div>
+
+  <div class="music-title">Baby-max Music Player</div>
+
+  <div class="music-sub" id="musicName">
+   Choose a music file from your device
+  </div>
+
+  <input id="musicFile" type="file" accept="audio/*">
+
+  <div class="music-controls">
+
+   <button onclick="back10()">↶</button>
+
+   <button class="main" onclick="toggleMusic()" id="musicBtn">
+    ▶
+   </button>
+
+   <button onclick="forward10()">↷</button>
+
+  </div>
+
+  <input
+   class="progress"
+   id="progress"
+   type="range"
+   min="0"
+   max="100"
+   value="0"
+  >
+
+  <audio id="audio"></audio>
+
+ </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+
+ <div class="heading reveal">
+  <div class="eyebrow">Memory Gallery</div>
+  <h2>Moments made <span class="gradient">forever.</span></h2>
+  <p>Replace the emoji cards with your real celebration photos whenever you want.</p>
+ </div>
+
+ <div class="gallery">
+
+  <div class="photo reveal" onclick="openPhoto('👶')">👶</div>
+  <div class="photo reveal" onclick="openPhoto('🍼')">🍼</div>
+  <div class="photo reveal" onclick="openPhoto('🌸')">🌸</div>
+  <div class="photo reveal" onclick="openPhoto('💐')">💐</div>
+  <div class="photo reveal" onclick="openPhoto('🎀')">🎀</div>
+  <div class="photo reveal" onclick="openPhoto('✨')">✨</div>
+
+ </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section>
+
+ <div class="heading reveal">
+  <div class="eyebrow">The Big Moment</div>
+  <h2>Countdown to <span class="gradient">magic.</span></h2>
+ </div>
+
+ <div class="countdown">
+
+  <div class="card time reveal">
+   <b id="days">00</b>
+   <span>Days</span>
+  </div>
+
+  <div class="card time reveal">
+   <b id="hours">00</b>
+   <span>Hours</span>
+  </div>
+
+  <div class="card time reveal">
+   <b id="minutes">00</b>
+   <span>Minutes</span>
+  </div>
+
+  <div class="card time reveal">
+   <b id="seconds">00</b>
+   <span>Seconds</span>
+  </div>
+
+ </div>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+
+ <div class="heading reveal">
+  <div class="eyebrow">Baby-max Arcade</div>
+  <h2>Game <span class="gradient">time.</span></h2>
+  <p>Play, score points and climb the local Baby-max leaderboard.</p>
+ </div>
+
+ <div class="games">
+
+  <!-- GAME 1 -->
+  <div class="card game reveal">
+
+   <div class="game-icon">🍼</div>
+
+   <h3>Baby Prediction</h3>
+
+   <p>
+    Choose your prediction and earn points for the leaderboard.
+   </p>
+
+   <div class="gamearea">
+
+    <div class="choices">
+
+     <button onclick="prediction('🌸 Pink',20)">🌸 Pink</button>
+
+     <button onclick="prediction('💙 Blue',20)">💙 Blue</button>
+
+     <button onclick="prediction('🌈 Surprise',50)">🌈 Surprise</button>
+
+    </div>
+
+    <div class="result" id="predictionResult">
+     Make your prediction!
+    </div>
+
+   </div>
+
+  </div>
+
+  <!-- GAME 2 -->
+  <div class="card game reveal">
+
+   <div class="game-icon">🎯</div>
+
+   <h3>Baby Rush</h3>
+
+   <p>
+    Hit START and get a random score. Can you reach 100?
+   </p>
+
+   <div class="gamearea">
+
+    <button class="gamebtn" onclick="babyRush()">
+     🎯 PLAY ROUND
+    </button>
+
+    <div class="result" id="rushResult">
+     Ready?
+    </div>
+
+   </div>
+
+  </div>
+
+  <!-- GAME 3 -->
+  <div class="card game reveal">
+
+   <div class="game-icon">🔮</div>
+
+   <h3>Baby Prediction — Full Quiz</h3>
+
+   <p>
+    10 rounds of predictions. Answer them all for maximum XP.
+   </p>
+
+   <div class="gamearea">
+
+    <div class="quizprogress" id="pqProgress">Question 1 / 10</div>
+    <div class="quizquestion" id="pqQuestion">Loading…</div>
+
+    <div class="choices" id="pqChoices"></div>
+
+    <div class="result" id="pqResult"></div>
+
+   </div>
+
+  </div>
+
+  <!-- GAME 4 -->
+  <div class="card game reveal">
+
+   <div class="game-icon">🌍</div>
+
+   <h3>Baby-max Geography Quiz</h3>
+
+   <p>
+    Five quick geography questions while you wait for the reels to load.
+   </p>
+
+   <div class="gamearea">
+
+    <div class="quizprogress" id="gqProgress">Question 1 / 5</div>
+    <div class="quizquestion" id="gqQuestion">Loading…</div>
+
+    <div class="choices" id="gqChoices"></div>
+
+    <div class="result" id="gqResult"></div>
+
+   </div>
+
+  </div>
+
+ </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section>
+
+ <div class="heading reveal">
+  <div class="eyebrow">Baby-max Arena</div>
+  <h2>Family <span class="gradient">Leaderboard.</span></h2>
+  <p>Enter players and let the competition begin.</p>
+ </div>
+
+ <div class="card leaderboard reveal">
+
+  <div class="playeradd">
+
+   <input
+    class="input"
+    id="playerName"
+    maxlength="30"
+    placeholder="Player name"
+   >
+
+   <button class="btn primary" onclick="addPlayer()">
+    + Player
+   </button>
+
+  </div>
+
+  <div class="scorelist" id="scoreList"></div>
+
+ </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+
+ <div class="heading reveal">
+  <div class="eyebrow">You're Invited</div>
+  <h2>Save your <span class="gradient">seat.</span></h2>
+ </div>
+
+ <div class="card rsvp reveal">
+
+  <div class="formgrid">
+
+   <input
+    class="input"
+    id="rsvpName"
+    placeholder="Your name"
+   >
+
+   <select class="input" id="rsvpGuests">
+    <option value="1">1 Guest</option>
+    <option value="2">2 Guests</option>
+    <option value="3">3 Guests</option>
+    <option value="4">4 Guests</option>
+    <option value="5">5 Guests</option>
+   </select>
+
+   <select class="input full" id="rsvpStatus">
+    <option value="yes">🎉 Yes, I'll be there!</option>
+    <option value="maybe">🤔 Maybe</option>
+    <option value="no">😢 Sorry, can't make it</option>
+   </select>
+
+   <textarea
+    class="input full"
+    id="rsvpMessage"
+    placeholder="Leave a message for Rahul & Haritha..."
+   ></textarea>
+
+   <button
+    class="btn primary full"
+    onclick="submitRSVP()"
+   >
+    💌 Confirm RSVP
+   </button>
+
+  </div>
+
+  <div id="rsvpResult"
+   style="text-align:center;color:#ff77b7;margin-top:15px">
+  </div>
+
+ </div>
+</section>
+
+<!-- QR -->
+<section>
+
+ <div class="card qrbox reveal">
+
+  <div class="eyebrow">Digital Invitation</div>
+
+  <h2 style="margin-top:10px">
+   Scan the <span class="gradient">Baby-max.</span>
+  </h2>
+
+  <div id="qr">
+   📱
+  </div>
+
+  <p class="qrtext">
+   This demo QR represents your invitation.
+   When you publish Baby-max online, you can replace this
+   area with a real QR code pointing to your live invitation.
+  </p>
+
+  <button class="btn primary" onclick="copyInvite()">
+   📋 Copy Invite Text
+  </button>
+
+ </div>
+</section>
+
+<!-- SECRET -->
+<section>
+
+ <div class="card secret reveal">
+
+  <div class="eyebrow">Classified</div>
+
+  <h2>
+   🥚 Secret <span class="gradient">Baby Egg.</span>
+  </h2>
+
+  <p>
+   There may or may not be something hidden here.
+  </p>
+
+  <div id="egg" onclick="eggClick()">🥚</div>
+
+  <p id="eggText">Don't touch the egg. 👀</p>
+
+ </div>
+
+</section>
+
+<footer>
+
+ <div class="footerlogo gradient">Baby-max</div>
+
+ <p>Rahul &amp; Haritha • Godh Bharai</p>
+
+ <p>Made with ❤️, pixels and maximum baby energy.</p>
+
+</footer>
+
+<!-- CAST & CREW — FINAL SECTION -->
+<section id="credits" class="credits-section">
+
+ <div class="heading reveal">
+  <div class="eyebrow">The Final Scene</div>
+  <h2>Cast &amp; <span class="gradient">Crew.</span></h2>
+  <p>The People Who Made It a Day to Remember</p>
+ </div>
+
+ <div class="card credits-viewport reveal">
+
+  <div class="credits-particles" aria-hidden="true"></div>
+
+  <div class="credits-roll">
+
+   <div class="credits-block">
+    <div class="credits-role">Starring</div>
+    <div class="credits-name lead">Rahul</div>
+    <div class="credits-name lead">Haritha</div>
+   </div>
+
+   <div class="credits-block">
+    <div class="credits-role">Featuring the Family</div>
+    <div class="credits-name">Shobna</div>
+    <div class="credits-name">Sunny</div>
+    <div class="credits-name">Sumin</div>
+    <div class="credits-name">Sumin's Wife</div>
+    <div class="credits-name">Aditya</div>
+    <div class="credits-name">Seena</div>
+    <div class="credits-name">Ezza</div>
+    <div class="credits-name">Hemant</div>
+    <div class="credits-name">Bindu</div>
+    <div class="credits-name">Gurjit</div>
+    <div class="credits-name">Amala</div>
+    <div class="credits-name">Jasmit</div>
+    <div class="credits-name">Jaiya</div>
+    <div class="credits-name">Deepak</div>
+    <div class="credits-name">Deepa</div>
+    <div class="credits-name">Rathi</div>
+    <div class="credits-name">Rajeev</div>
+    <div class="credits-name">Ravi</div>
+    <div class="credits-name">Sijil</div>
+    <div class="credits-name">Harjit</div>
+    <div class="credits-name">Manthan</div>
+   </div>
+
+   <div class="credits-block">
+    <div class="credits-role">Direction &amp; Editing</div>
+    <div class="credits-name lead">Manthan</div>
+   </div>
+
+   <div class="credits-block credits-final">
+    <div class="credits-babymax gradient">BABY-max</div>
+   </div>
+
+  </div>
+
+  <div class="credits-fade-bottom"></div>
+
+ </div>
+
+</section>
+
+<div class="blackout" id="blackout"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+
+ <div class="card modalbox">
+
+  <button class="close" onclick="closeModal()">×</button>
+
+  <div id="modalContent"></div>
+
+ </div>
+
+</div>
+
+<div class="toast" id="toast">
+ Baby-max ✨
+</div>
+
+<script>
+
+/* =========================================================
+   BABY-MAX V2 ENGINE
+   ========================================================= */
+
+/* ---------- REVEAL ---------- */
+
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting)
+   entry.target.classList.add("visible");
+ });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(x=>{
+ revealObserver.observe(x);
+});
+
+
+/* ---------- TOAST ---------- */
+
+let toastTimer;
+
+function toast(text){
+
+ const t=document.getElementById("toast");
+
+ t.textContent=text;
+ t.classList.add("show");
+
+ clearTimeout(toastTimer);
+
+ toastTimer=setTimeout(()=>{
+  t.classList.remove("show");
+ },2400);
+}
+
+
+/* ---------- FIREWORKS ---------- */
+
+function fireworks(){
+
+ toast("🎆 BABY-MAX FIREWORKS!");
+
+ for(let i=0;i<100;i++){
+
+  const f=document.createElement("div");
+
+  f.className="firework";
+
+  f.style.left=(20+Math.random()*60)+"vw";
+  f.style.top=(15+Math.random()*50)+"vh";
+
+  f.style.setProperty("--x",Math.random());
+  f.style.setProperty("--y",Math.random());
+
+  f.style.background=[
+   "#e6c26a",
+   "#f3d78c",
+   "#c9832f",
+   "#a9791f",
+   "#ff3b91",
+   "#69e69a",
+   "#ffffff"
+  ][Math.floor(Math.random()*7)];
+
+  document.body.appendChild(f);
+
+  setTimeout(()=>f.remove(),1300);
+ }
+}
+
+
+/* ---------- BALLOONS ---------- */
+
+let popped=0;
+
+function popBalloon(balloon){
+
+ popped++;
+
+ balloon.style.transform="scale(0)";
+ balloon.style.opacity="0";
+
+ toast("💥 POP! "+popped+"/5");
+
+ if(popped>=5){
+
+  fireworks();
+
+  setTimeout(()=>{
+   document.querySelectorAll(".balloon").forEach(b=>{
+    b.style.transform="";
+    b.style.opacity="1";
+   });
+
+   popped=0;
+  },1200);
+ }
+}
+
+
+/* ---------- 3D CRIB ---------- */
+
+const crib=document.getElementById("cribStage");
+
+function cribMode(mode){
+
+ if(mode==="slow")
+  crib.style.animationDuration="18s";
+
+ if(mode==="normal")
+  crib.style.animationDuration="9s";
+
+ if(mode==="turbo")
+  crib.style.animationDuration="2s";
+
+ if(mode==="stop")
+  crib.style.animationPlayState="paused";
+ else
+  crib.style.animationPlayState="running";
+
+ toast("🍼 Crib mode: "+mode);
+}
+
+
+/* ---------- MUSIC PLAYER ---------- */
+
+const audio=document.getElementById("audio");
+const musicFile=document.getElementById("musicFile");
+const musicBtn=document.getElementById("musicBtn");
+const disc=document.getElementById("disc");
+const progress=document.getElementById("progress");
+
+musicFile.addEventListener("change",()=>{
+
+ const file=musicFile.files[0];
+
+ if(!file)return;
+
+ audio.src=URL.createObjectURL(file);
+
+ document.getElementById("musicName").textContent=file.name;
+
+ toast("🎵 Music loaded!");
+
+});
+
+function toggleMusic(){
+
+ if(!audio.src){
+  toast("Choose a music file first 🎵");
+  return;
+ }
+
+ if(audio.paused){
+  audio.play();
+  musicBtn.textContent="❚❚";
+  disc.classList.add("playing");
+ }else{
+  audio.pause();
+  musicBtn.textContent="▶";
+  disc.classList.remove("playing");
+ }
+}
+
+audio.addEventListener("timeupdate",()=>{
+
+ if(audio.duration){
+  progress.value=(audio.currentTime/audio.duration)*100;
+ }
+
+});
+
+progress.addEventListener("input",()=>{
+
+ if(audio.duration){
+  audio.currentTime=(progress.value/100)*audio.duration;
+ }
+
+});
+
+function back10(){
+ audio.currentTime=Math.max(0,audio.currentTime-10);
+}
+
+function forward10(){
+ audio.currentTime=Math.min(audio.duration||0,audio.currentTime+10);
+}
+
+
+/* ---------- REEL / VIDEO SYSTEM ---------- */
+/* Reel 01 and Reel 02 are independent — each is checked and
+   played on its own. Neither depends on the other, and there
+   is no Reel 03. A fallback only appears if the file genuinely
+   fails to load (never shown just because it hasn't loaded yet). */
+
+function reelError(reelNum){
+ const box=document.getElementById("videoFallback"+reelNum);
+ if(box)box.classList.add("show");
+}
+
+function reelRecovered(reelNum){
+ const box=document.getElementById("videoFallback"+reelNum);
+ if(box)box.classList.remove("show");
+}
+
+function retryReel(reelNum){
+
+ const video=document.getElementById("reelVideo"+reelNum);
+
+ if(!video)return;
+
+ reelRecovered(reelNum);
+
+ // Re-trigger the browser's load attempt with a cache-busting
+ // reload so a file added after the page opened is picked up.
+ video.load();
+
+ toast("🎬 Checking for Reel "+reelNum+"…");
+}
+
+[1,2].forEach(n=>{
+
+ const video=document.getElementById("reelVideo"+n);
+
+ if(!video)return;
+
+ // "error" fires on the <video> when the active source fails —
+ // this is a real, confirmed failure (missing/corrupt file),
+ // never a guess or a placeholder state.
+ video.addEventListener("error",()=>reelError(n));
+
+ video.querySelectorAll("source").forEach(src=>{
+  src.addEventListener("error",()=>reelError(n));
+ });
+
+ // Once metadata successfully loads, the file is confirmed
+ // present and playable — clear any stale fallback state.
+ video.addEventListener("loadedmetadata",()=>reelRecovered(n));
+
+ video.addEventListener("play",()=>reelRecovered(n));
+
+});
+
+
+/* ---------- PHOTO MODAL ---------- */
+
+function openPhoto(icon){
+
+ document.getElementById("modalContent").innerHTML=`
+  <div class="lightimage">${icon}</div>
+  <h2>Baby-max Memory</h2>
+  <p style="color:#888;margin-top:8px">
+   Replace this placeholder with one of your real celebration photos.
+  </p>
+ `;
+
+ document.getElementById("modal").classList.add("open");
+}
+
+function closeModal(){
+ document.getElementById("modal").classList.remove("open");
+}
+
+
+/* ---------- COUNTDOWN ---------- */
+
+const eventDate=new Date("2026-12-31T23:59:59");
+
+function countdown(){
+
+ const diff=eventDate-new Date();
+
+ if(diff<=0)return;
+
+ const d=Math.floor(diff/86400000);
+ const h=Math.floor(diff/3600000)%24;
+ const m=Math.floor(diff/60000)%60;
+ const s=Math.floor(diff/1000)%60;
+
+ document.getElementById("days").textContent=
+  String(d).padStart(2,"0");
+
+ document.getElementById("hours").textContent=
+  String(h).padStart(2,"0");
+
+ document.getElementById("minutes").textContent=
+  String(m).padStart(2,"0");
+
+ document.getElementById("seconds").textContent=
+  String(s).padStart(2,"0");
+}
+
+countdown();
+setInterval(countdown,1000);
+
+
+/* ---------- LEADERBOARD ---------- */
+
+let players=JSON.parse(
+ localStorage.getItem("babymaxPlayers")||"[]"
+);
+
+function savePlayers(){
+ localStorage.setItem(
+  "babymaxPlayers",
+  JSON.stringify(players)
+ );
+}
+
+function addPlayer(){
+
+ const input=document.getElementById("playerName");
+
+ const name=input.value.trim();
+
+ if(!name){
+  toast("Enter a player name 👀");
+  return;
+ }
+
+ players.push({
+  name:name,
+  score:0
+ });
+
+ input.value="";
+
+ savePlayers();
+ renderPlayers();
+
+ toast("🏆 Player added!");
+}
+
+function addScore(points){
+
+ if(players.length===0){
+
+  toast("Add a player first!");
+
+  return;
+ }
+
+ players[0].score+=points;
+
+ savePlayers();
+ renderPlayers();
+}
+
+function renderPlayers(){
+
+ const list=document.getElementById("scoreList");
+
+ list.innerHTML="";
+
+ players
+  .sort((a,b)=>b.score-a.score)
+  .forEach((p,i)=>{
+
+   const div=document.createElement("div");
+
+   div.className="player";
+
+   const medal=
+    i===0?"🥇":
+    i===1?"🥈":
+    i===2?"🥉":
+    "#"+(i+1);
+
+   div.innerHTML=`
+    <div class="rank">${medal}</div>
+    <div>${escapeHTML(p.name)}</div>
+    <div class="score">${p.score} XP</div>
+   `;
+
+   list.appendChild(div);
+  });
+}
+
+function escapeHTML(text){
+
+ return text
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+}
+
+renderPlayers();
+
+
+/* ---------- GAME 1 ---------- */
+
+function prediction(choice,points){
+
+ document.getElementById("predictionResult").textContent=
+  choice+" locked in! +"+points+" XP";
+
+ addScore(points);
+
+ toast("🎯 Prediction recorded!");
+}
+
+
+/* ---------- GAME 2 ---------- */
+
+function babyRush(){
+
+ const score=Math.floor(Math.random()*101);
+
+ let msg;
+
+ if(score>=90)
+  msg="🏆 LEGENDARY!";
+ else if(score>=70)
+  msg="🔥 AMAZING!";
+ else if(score>=40)
+  msg="✨ NICE!";
+ else
+  msg="😂 Baby needs more energy!";
+
+ document.getElementById("rushResult").textContent=
+  score+" XP — "+msg;
+
+ addScore(score);
+
+ if(score>=90)
+  fireworks();
+}
+
+
+/* ---------- GAME 3: 10-QUESTION PREDICTION QUIZ ---------- */
+
+const predictionQuizQuestions=[
+ {q:"What will be the baby's hair color?",options:[["Jet Black",10],["Soft Brown",10],["Bald & Beautiful 😄",20]]},
+ {q:"Guess the baby's birth weight.",options:[["Under 3kg",10],["3 – 3.5kg",15],["Over 3.5kg",10]]},
+ {q:"What time will baby make an entrance?",options:[["Morning",10],["Afternoon",10],["Middle of the night",20]]},
+ {q:"Who will the baby look like more?",options:[["Rahul",15],["Haritha",15],["An equal mix",25]]},
+ {q:"What will baby's first word be?",options:[["Mama",10],["Papa",10],["Something unexpected",20]]},
+ {q:"How much hair will baby have at birth?",options:[["A full head",15],["A little",10],["None yet",10]]},
+ {q:"Will baby be a good sleeper?",options:[["Yes, angel mode",10],["No, party mode 😂",10],["Depends on the day",20]]},
+ {q:"Baby's future favorite snack?",options:[["Fruit",10],["Sweets",15],["Absolutely everything",20]]},
+ {q:"Which star sign will baby be?",options:[["Fire sign",10],["Water sign",10],["Earth or Air sign",10]]},
+ {q:"Which planet is Baby-max secretly from? 😄",options:[["Mars",10],["Jupiter",10],["Definitely Earth",15]]}
+];
+
+let pqIndex=0;
+
+function renderPredictionQuiz(){
+
+ if(pqIndex>=predictionQuizQuestions.length){
+
+  document.getElementById("pqProgress").textContent="Quiz complete! 🎉";
+  document.getElementById("pqQuestion").textContent=
+   "You predicted all "+predictionQuizQuestions.length+" rounds. Thank you for playing!";
+  document.getElementById("pqChoices").innerHTML=
+   '<button class="gamebtn" style="grid-column:1/-1" onclick="restartPredictionQuiz()">🔁 Play Again</button>';
+
+  return;
+ }
+
+ const q=predictionQuizQuestions[pqIndex];
+
+ document.getElementById("pqProgress").textContent=
+  "Question "+(pqIndex+1)+" / "+predictionQuizQuestions.length;
+
+ document.getElementById("pqQuestion").textContent=q.q;
+
+ const choicesEl=document.getElementById("pqChoices");
+
+ choicesEl.innerHTML="";
+
+ q.options.forEach(opt=>{
+
+  const btn=document.createElement("button");
+
+  btn.textContent=opt[0];
+  btn.onclick=()=>answerPredictionQuiz(opt[0],opt[1]);
+
+  choicesEl.appendChild(btn);
+ });
+
+ document.getElementById("pqResult").textContent="";
+}
+
+function answerPredictionQuiz(label,points){
+
+ addScore(points);
+
+ document.getElementById("pqResult").textContent=
+  label+" locked in! +"+points+" XP";
+
+ pqIndex++;
+
+ if(pqIndex>=predictionQuizQuestions.length)
+  fireworks();
+
+ setTimeout(renderPredictionQuiz,550);
+}
+
+function restartPredictionQuiz(){
+ pqIndex=0;
+ renderPredictionQuiz();
+}
+
+renderPredictionQuiz();
+
+
+/* ---------- GAME 4: GEOGRAPHY QUIZ ---------- */
+
+const geoQuizQuestions=[
+ {q:"Which is the largest continent by area?",
+  options:[["Asia",25,true],["Africa",5,false],["Europe",5,false]]},
+ {q:"Which river is traditionally called the world's longest?",
+  options:[["Nile",25,true],["Amazon",10,false],["Yangtze",5,false]]},
+ {q:"Which country now has the world's largest population?",
+  options:[["India",25,true],["China",10,false],["USA",5,false]]},
+ {q:"Which is the smallest country in the world?",
+  options:[["Vatican City",25,true],["Monaco",10,false],["San Marino",5,false]]},
+ {q:"Mount Everest sits in which mountain range?",
+  options:[["Himalayas",25,true],["Andes",5,false],["Alps",5,false]]}
+];
+
+let gqIndex=0;
+
+function renderGeoQuiz(){
+
+ if(gqIndex>=geoQuizQuestions.length){
+
+  document.getElementById("gqProgress").textContent="Quiz complete! 🌍";
+  document.getElementById("gqQuestion").textContent=
+   "That's a wrap on the geography round.";
+  document.getElementById("gqChoices").innerHTML=
+   '<button class="gamebtn" style="grid-column:1/-1" onclick="restartGeoQuiz()">🔁 Play Again</button>';
+
+  return;
+ }
+
+ const q=geoQuizQuestions[gqIndex];
+
+ document.getElementById("gqProgress").textContent=
+  "Question "+(gqIndex+1)+" / "+geoQuizQuestions.length;
+
+ document.getElementById("gqQuestion").textContent=q.q;
+
+ const choicesEl=document.getElementById("gqChoices");
+
+ choicesEl.innerHTML="";
+
+ q.options.forEach(opt=>{
+
+  const btn=document.createElement("button");
+
+  btn.textContent=opt[0];
+  btn.onclick=()=>answerGeoQuiz(opt[0],opt[1],opt[2]);
+
+  choicesEl.appendChild(btn);
+ });
+
+ document.getElementById("gqResult").textContent="";
+}
+
+function answerGeoQuiz(label,points,correct){
+
+ addScore(points);
+
+ document.getElementById("gqResult").textContent=
+  (correct?"✅ Correct! ":"❌ Nice try! ")+label+" — +"+points+" XP";
+
+ gqIndex++;
+
+ if(gqIndex>=geoQuizQuestions.length)
+  fireworks();
+
+ setTimeout(renderGeoQuiz,650);
+}
+
+function restartGeoQuiz(){
+ gqIndex=0;
+ renderGeoQuiz();
+}
+
+renderGeoQuiz();
+
+
+/* ---------- RSVP ---------- */
+
+function submitRSVP(){
+
+ const name=document.getElementById("rsvpName").value.trim();
+
+ if(!name){
+
+  toast("Please enter your name 💌");
+
+  return;
+ }
+
+ const guests=document.getElementById("rsvpGuests").value;
+ const status=document.getElementById("rsvpStatus").value;
+ const message=document.getElementById("rsvpMessage").value;
+
+ const data={
+  name,
+  guests,
+  status,
+  message,
+  time:new Date().toISOString()
+ };
+
+ localStorage.setItem(
+  "babymaxRSVP",
+  JSON.stringify(data)
+ );
+
+ const statusText={
+  yes:"🎉 See you there!",
+  maybe:"🤔 We'll keep your maybe!",
+  no:"😢 We'll miss you!"
+ };
+
+ document.getElementById("rsvpResult").textContent=
+  statusText[status]+" RSVP saved locally.";
+
+ toast("💌 RSVP saved!");
+
+}
+
+
+/* ---------- QR INVITE ---------- */
+
+function copyInvite(){
+
+ const text=
+ `Baby-max — Rahul & Haritha's Godh Bharai 🍼✨`;
+
+ if(navigator.clipboard){
+
+  navigator.clipboard.writeText(text);
+
+  toast("📋 Invite copied!");
+
+ }else{
+
+  toast("Copy not supported on this browser.");
+
+ }
+}
+
+
+/* ---------- EASTER EGG ---------- */
+
+let eggClicks=0;
+
+function eggClick(){
+
+ eggClicks++;
+
+ const egg=document.getElementById("egg");
+ const text=document.getElementById("eggText");
+
+ egg.style.transform=
+  `rotate(${eggClicks*30}deg) scale(${1+eggClicks*.06})`;
+
+ if(eggClicks===1)
+  text.textContent="👀 I told you not to touch it.";
+
+ if(eggClicks===2)
+  text.textContent="😳 Something is happening...";
+
+ if(eggClicks===3)
+  text.textContent="🍼 BABY-MAX SYSTEM ONLINE.";
+
+ if(eggClicks>=5){
+
+  text.textContent=
+   "🎉 SECRET UNLOCKED: MAXIMUM BABY MODE!";
+
+  fireworks();
+
+  eggClicks=0;
+ }
+}
+
+
+/* ---------- THEME ---------- */
+
+let light=false;
+
+function toggleTheme(){
+
+ light=!light;
+
+ if(light){
+
+  document.documentElement.style.setProperty("--bg","#f5f5f7");
+  document.documentElement.style.setProperty("--bg2","#fff");
+  document.documentElement.style.setProperty("--text","#111");
+  document.documentElement.style.setProperty("--muted","#666");
+  document.body.style.background="#f5f5f7";
+
+  toast("☀️ Light mode");
+
+ }else{
+
+  document.documentElement.style.setProperty("--bg","#050507");
+  document.documentElement.style.setProperty("--bg2","#0d0d12");
+  document.documentElement.style.setProperty("--text","#f7f7fb");
+  document.documentElement.style.setProperty("--muted","#92929c");
+  document.body.style.background="";
+
+  toast("🌙 Dark mode");
+ }
+}
+
+
+/* ---------- KEYBOARD EASTER EGGS ---------- */
+
+let secretCode=[];
+
+document.addEventListener("keydown",e=>{
+
+ secretCode.push(e.key.toLowerCase());
+
+ if(secretCode.length>10)
+  secretCode.shift();
+
+ if(secretCode.join("")==="babymax"){
+
+  fireworks();
+
+  toast("🥚 SECRET BABY-MAX MODE!");
+
+  secretCode=[];
+ }
+
+ if(e.key==="Escape")
+  closeModal();
+});
+
+
+/* ---------- DOUBLE CLICK ---------- */
+
+document.addEventListener("dblclick",e=>{
+
+ if(
+  e.target.tagName!=="INPUT" &&
+  e.target.tagName!=="TEXTAREA"
+ ){
+  fireworks();
+ }
+});
+
+
+/* ---------- PARTICLES ---------- */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+
+function resizeCanvas(){
+
+ canvas.width=innerWidth;
+ canvas.height=innerHeight;
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+const particleCount=(innerWidth<800||navigator.maxTouchPoints>2)?32:70;
+
+for(let i=0;i<particleCount;i++){
+
+ particles.push({
+  x:Math.random()*innerWidth,
+  y:Math.random()*innerHeight,
+  r:Math.random()*1.8+.3,
+  vx:(Math.random()-.5)*.25,
+  vy:(Math.random()-.5)*.25
+ });
+}
+
+function particleLoop(){
+
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ ctx.fillStyle="rgba(230,194,106,.4)";
+
+ particles.forEach(p=>{
+
+  p.x+=p.vx;
+  p.y+=p.vy;
+
+  if(p.x<0)p.x=innerWidth;
+  if(p.x>innerWidth)p.x=0;
+
+  if(p.y<0)p.y=innerHeight;
+  if(p.y>innerHeight)p.y=0;
+
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  ctx.fill();
+ });
+
+ requestAnimationFrame(particleLoop);
+}
+
+particleLoop();
+
+
+/* ---------- CLOSE MODAL OUTSIDE ---------- */
+
+document.getElementById("modal").addEventListener("click",e=>{
+
+ if(e.target.id==="modal")
+  closeModal();
+
+});
+
+
+/* ---------- WELCOME ---------- */
+
+setTimeout(()=>{
+
+ document.getElementById("modalContent").innerHTML=`
+  <div style="font-size:5rem">🎬</div>
+  <h2>Welcome to the Baby-max Premiere</h2>
+  <p style="color:#888;margin-top:10px">
+   Rahul &amp; Haritha's interactive Godh Bharai experience.
+  </p>
+  <button class="btn primary"
+   onclick="closeModal();fireworks()"
+   style="margin-top:20px">
+   ✨ Enter Baby-max
+  </button>
+ `;
+
+ document.getElementById("modal").classList.add("open");
+
+},1200);
+
+</script>
+
+</body>
+</html>
